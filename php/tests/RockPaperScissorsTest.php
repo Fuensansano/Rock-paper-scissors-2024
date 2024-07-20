@@ -24,6 +24,7 @@ class RockPaperScissorsTest extends TestCase
         yield 'given_player_1_have_chosen_paper_when_player_2_chooses_rock_then_player_1_win' => [Movements::PAPER, Movements::ROCK, Players::Player1];
         yield 'given_player_1_have_chosen_rock_when_player_1_chooses_paper_then_player_2_win' => [Movements::ROCK, Movements::PAPER, Players::Player2];
         yield 'given_player_1_have_chosen_scissors_when_player_2_chooses_rock_then_player_2_win' => [Movements::SCISSORS, Movements::ROCK, Players::Player2];
+        yield 'given_player_1_have_chosen_scissors_when_player_2_chooses_paper_then_player_1_win' => [Movements::SCISSORS, Movements::PAPER, Players::Player1];
     }
 
     #[Test]
