@@ -10,6 +10,10 @@ class RockPapperScissors
             return 'player1';
         }
 
+        if ($player1Movement === 'papper') {
+            return 'player1';
+        }
+
         return 'player2';
     }
 }

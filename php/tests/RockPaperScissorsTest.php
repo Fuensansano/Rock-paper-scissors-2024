@@ -22,4 +22,12 @@ class RockPaperScissorsTest extends TestCase
 
         self::assertEquals('player2', $game->move('scissors','rock'));
     }
+
+    /** @test */
+    public function given_player_1_have_chosen_papper_when_player_2_chooses_rock_then_player_1_win(): void
+    {
+        $game = new RockPapperScissors();
+
+        self::assertEquals('player1', $game->move('papper','rock'));
+    }
 }
