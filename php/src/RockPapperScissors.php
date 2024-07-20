@@ -4,16 +4,17 @@ namespace Kata;
 
 class RockPapperScissors
 {
-    public function move($player1Movement, $player2Movement)
+    public function move($player1Movement, $player2Movement): Players
     {
         if ($player1Movement === 'rock') {
-            return 'player1';
+            return Players::Player1;
         }
 
-        if ($player1Movement === 'papper') {
-            return 'player1';
+        if ($player1Movement === 'paper') {
+            return Players::Player1;
         }
 
-        return 'player2';
+        return Players::Player2;
+
     }
 }
