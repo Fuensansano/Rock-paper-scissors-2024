@@ -22,15 +22,18 @@ class RockPaperScissorsTest extends TestCase
     {
         yield 'given_player_1_have_chosen_rock_when_player_2_chooses_scissors_then_player_1_win' => [Movements::ROCK, Movements::SCISSORS, Players::Player1];
         yield 'given_player_1_have_chosen_paper_when_player_2_chooses_rock_then_player_1_win' => [Movements::PAPER, Movements::ROCK, Players::Player1];
+        yield 'given_player_1_have_chosen_scissors_when_player_2_chooses_paper_then_player_1_win' => [Movements::SCISSORS, Movements::PAPER, Players::Player1];
         yield 'given_player_1_have_chosen_rock_when_player_1_chooses_paper_then_player_2_win' => [Movements::ROCK, Movements::PAPER, Players::Player2];
         yield 'given_player_1_have_chosen_scissors_when_player_2_chooses_rock_then_player_2_win' => [Movements::SCISSORS, Movements::ROCK, Players::Player2];
-        yield 'given_player_1_have_chosen_scissors_when_player_2_chooses_paper_then_player_1_win' => [Movements::SCISSORS, Movements::PAPER, Players::Player1];
+        yield 'given_player_1_have_chosen_paper_when_player_2_chooses_scissors_then_player_2_win' => [Movements::PAPER, Movements::SCISSORS, Players::Player2];
         yield 'given_player_1_have_chosen_scissors_when_player_2_chooses_scissors_then_it_is_a_draw' => [Movements::SCISSORS, Movements::SCISSORS, Players::Draw];
+        yield 'given_player_1_have_chosen_rock_when_player_2_chooses_rock_then_it_is_a_draw' => [Movements::ROCK, Movements::ROCK, Players::Draw];
+        yield 'given_player_1_have_chosen_paper_when_player_2_chooses_paper_then_it_is_a_draw' => [Movements::PAPER, Movements::PAPER, Players::Draw];
     }
 
     #[Test]
     #[DataProvider('gameProvider')]
-    public function given_the_player1_movement_and_the_player2_movement_one_of_them_should_win(Movements $movementPlayer1, Movements $movementPlayer2, Players $winner): void
+    public function given_the_player1_movement_and_the_player2_movement_one_of_them_should_win($movementPlayer1, $movementPlayer2, $winner): void
     {
         self::assertEquals($winner, $this->game->move($movementPlayer1,$movementPlayer2));
     }
