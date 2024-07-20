@@ -6,9 +6,14 @@ class RockPapperScissors
 {
     public function move($player1Movement, $player2Movement): Players
     {
+        if (($player1Movement === Movements::SCISSORS && $player2Movement === Movements::SCISSORS)) {
+            return Players::Draw;
+        }
+
         if ($this->hasPlayer1Win($player1Movement, $player2Movement)) {
             return Players::Player1;
         }
+
 
         return Players::Player2;
     }

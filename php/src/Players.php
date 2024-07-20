@@ -6,4 +6,5 @@ enum Players :string
 {
     case Player1 = "player1";
     case Player2 = "player2";
+    case Draw = "draw";
 }
