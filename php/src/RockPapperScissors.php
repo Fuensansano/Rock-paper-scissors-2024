@@ -6,11 +6,11 @@ class RockPapperScissors
 {
     public function move($player1Movement, $player2Movement): Players
     {
-        if ($player1Movement === 'rock') {
+        if ($player1Movement === Movements::ROCK) {
             return Players::Player1;
         }
 
-        if ($player1Movement === 'paper') {
+        if ($player1Movement === Movements::PAPER) {
             return Players::Player1;
         }
 

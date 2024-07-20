@@ -2,6 +2,7 @@
 
 namespace KataTests;
 
+use Kata\Movements;
 use Kata\Players;
 use Kata\RockPapperScissors;
 use PHPUnit\Framework\TestCase;
@@ -13,7 +14,7 @@ class RockPaperScissorsTest extends TestCase
     {
         $game = new RockPapperScissors();
 
-        self::assertEquals(Players::Player1, $game->move('rock','scissors'));
+        self::assertEquals(Players::Player1, $game->move(Movements::ROCK,Movements::PAPER));
     }
 
     /** @test */
@@ -21,7 +22,7 @@ class RockPaperScissorsTest extends TestCase
     {
         $game = new RockPapperScissors();
 
-        self::assertEquals(Players::Player2, $game->move('scissors','rock'));
+        self::assertEquals(Players::Player2, $game->move(Movements::SCISSORS,Movements::ROCK));
     }
 
     /** @test */
@@ -29,6 +30,6 @@ class RockPaperScissorsTest extends TestCase
     {
         $game = new RockPapperScissors();
 
-        self::assertEquals(Players::Player1, $game->move('paper','rock'));
+        self::assertEquals(Players::Player1, $game->move(Movements::PAPER,Movements::ROCK));
     }
 }
