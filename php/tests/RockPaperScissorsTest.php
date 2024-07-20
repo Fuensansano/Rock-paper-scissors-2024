@@ -14,7 +14,7 @@ class RockPaperScissorsTest extends TestCase
     {
         $game = new RockPapperScissors();
 
-        self::assertEquals(Players::Player1, $game->move(Movements::ROCK,Movements::PAPER));
+        self::assertEquals(Players::Player1, $game->move(Movements::ROCK,Movements::SCISSORS));
     }
 
     /** @test */
@@ -26,10 +26,18 @@ class RockPaperScissorsTest extends TestCase
     }
 
     /** @test */
-    public function given_player_1_have_chosen_papper_when_player_2_chooses_rock_then_player_1_win(): void
+    public function given_player_1_have_chosen_paper_when_player_2_chooses_rock_then_player_1_win(): void
     {
         $game = new RockPapperScissors();
 
         self::assertEquals(Players::Player1, $game->move(Movements::PAPER,Movements::ROCK));
+    }
+
+    /** @test */
+    public function given_player_2_have_chosen_paper_when_player_1_chooses_rock_then_player_2_win(): void
+    {
+        $game = new RockPapperScissors();
+
+        self::assertEquals(Players::Player2, $game->move(Movements::ROCK,Movements::PAPER));
     }
 }
