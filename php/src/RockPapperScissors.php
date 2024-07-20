@@ -4,13 +4,12 @@ namespace Kata;
 
 class RockPapperScissors
 {
-    public function theMethod(): bool
+    public function move($player1Movement, $player2Movement)
     {
-        return true;
-    }
+        if ($player1Movement === 'rock') {
+            return 'player1';
+        }
 
-    public function move()
-    {
-        return 'player1';
+        return 'player2';
     }
 }
