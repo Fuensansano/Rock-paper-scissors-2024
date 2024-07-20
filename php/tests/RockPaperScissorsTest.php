@@ -5,39 +5,32 @@ namespace KataTests;
 use Kata\Movements;
 use Kata\Players;
 use Kata\RockPapperScissors;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class RockPaperScissorsTest extends TestCase
 {
-    /** @test */
-    public function given_player_1_have_chosen_rock_when_player_2_chooses_scissors_then_player_1_win(): void
-    {
-        $game = new RockPapperScissors();
+    private RockPapperScissors $game;
 
-        self::assertEquals(Players::Player1, $game->move(Movements::ROCK,Movements::SCISSORS));
+    protected function setUp(): void
+    {
+        $this->game = new RockPapperScissors();
     }
 
-    /** @test */
-    public function given_player_2_have_chosen_rock_when_player_1_chooses_scissors_then_player_2_win(): void
+    public static function gameProvider() :\Generator
     {
-        $game = new RockPapperScissors();
-
-        self::assertEquals(Players::Player2, $game->move(Movements::SCISSORS,Movements::ROCK));
+        yield 'given_player_1_have_chosen_rock_when_player_2_chooses_scissors_then_player_1_win' => [Movements::ROCK, Movements::SCISSORS, Players::Player1];
+        yield 'given_player_1_have_chosen_paper_when_player_2_chooses_rock_then_player_1_win' => [Movements::PAPER, Movements::ROCK, Players::Player1];
+        yield 'given_player_1_have_chosen_rock_when_player_1_chooses_paper_then_player_2_win' => [Movements::ROCK, Movements::PAPER, Players::Player2];
+        yield 'given_player_1_have_chosen_scissors_when_player_2_chooses_rock_then_player_2_win' => [Movements::SCISSORS, Movements::ROCK, Players::Player2];
     }
 
-    /** @test */
-    public function given_player_1_have_chosen_paper_when_player_2_chooses_rock_then_player_1_win(): void
+    #[Test]
+    #[DataProvider('gameProvider')]
+    public function given_the_player1_movement_and_the_player2_movement_one_of_them_should_win(Movements $movementPlayer1, Movements $movementPlayer2, Players $winner): void
     {
-        $game = new RockPapperScissors();
-
-        self::assertEquals(Players::Player1, $game->move(Movements::PAPER,Movements::ROCK));
+        self::assertEquals($winner, $this->game->move($movementPlayer1,$movementPlayer2));
     }
 
-    /** @test */
-    public function given_player_2_have_chosen_paper_when_player_1_chooses_rock_then_player_2_win(): void
-    {
-        $game = new RockPapperScissors();
-
-        self::assertEquals(Players::Player2, $game->move(Movements::ROCK,Movements::PAPER));
-    }
 }
